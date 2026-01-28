@@ -125,6 +125,11 @@ class VoidAssistant(commands.Bot):
         self.add_view(CloseTicketView())
 
     async def on_ready(self):
+        # Configuration du statut "Ne pas déranger" et de l'activité Playing
+        await self.change_presence(
+            status=discord.Status.do_not_disturb, 
+            activity=discord.Game(name="✨Managing tickets..")
+        )
         print(f"✅ {self.user} is online")
         await self.tree.sync()
 
